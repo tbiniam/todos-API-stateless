@@ -85,7 +85,7 @@ app.post('/todos', (req, res) => {
   const query = `INSERT INTO todos (id, name, priority, isComplete, isFun) VALUES (?, ?, ?, ?, ?)`;
   db.run(query, [nextId, name, priority, false, isFun], function(err) {
     if (err) {
-      return res.status(500).json({ message: 'Database run error', error: err.message });
+      return res.status(500).json({ message: 'Database error', error: err.message });
     }
     res.status(201).json({ id: nextId, name, priority, isComplete: false, isFun });
   });
